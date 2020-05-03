@@ -17,15 +17,16 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.example.gamesselector3.Data;
 import com.example.gamesselector3.FactoryCardsInfo;
+import com.example.gamesselector3.GamesAdapter;
 import com.example.gamesselector3.R;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.List;
 
 
-public class ListDrinkingGames extends AppCompatActivity {
+public class ListDrinkingGames extends GamesActivity {
 
-    public static MyAppAdapter myAppAdapter;
+    public static GamesAdapter myAppAdapter;
     public static ViewHolder viewHolder;
     private List<Data> array;
     private SwipeFlingAdapterView flingContainer;
@@ -35,10 +36,10 @@ public class ListDrinkingGames extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
+        flingContainer = findViewById(R.id.frame);
 
         array = FactoryCardsInfo.getCardsInfo("ListDrinkingGames");
-        myAppAdapter = new MyAppAdapter(array, ListDrinkingGames.this);
+        myAppAdapter = new GamesAdapter(array, ListDrinkingGames.this);
         flingContainer.setAdapter(myAppAdapter);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
@@ -89,69 +90,5 @@ public class ListDrinkingGames extends AppCompatActivity {
                 myAppAdapter.notifyDataSetChanged();
             }
         });
-    }
-
-    public static class ViewHolder {
-        public static FrameLayout background;
-        public TextView DataText;
-        public ImageView cardImage;
-
-
-    }
-
-    public class MyAppAdapter extends BaseAdapter {
-
-
-        public List<Data> parkingList;
-        public Context context;
-
-        private MyAppAdapter(List<Data> apps, Context context) {
-            this.parkingList = apps;
-            this.context = context;
-        }
-
-        @Override
-        public int getCount() {
-            return parkingList.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return position;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-
-            View rowView = convertView;
-
-
-            if (rowView == null) {
-
-                LayoutInflater inflater = getLayoutInflater();
-                rowView = inflater.inflate(R.layout.item, parent, false);
-                // configure view holder
-                viewHolder = new ViewHolder();
-                viewHolder.DataText = (TextView) rowView.findViewById(R.id.bookText);
-                viewHolder.background = (FrameLayout) rowView.findViewById(R.id.background);
-                viewHolder.cardImage = (ImageView) rowView.findViewById(R.id.cardImage);
-                rowView.setTag(viewHolder);
-
-            } else {
-                viewHolder = (ViewHolder) convertView.getTag();
-            }
-            viewHolder.DataText.setText(parkingList.get(position).getDescription() + "");
-
-            RequestBuilder<Drawable> drawableRequestBuilder = Glide.with(ListDrinkingGames.this).load(parkingList.get(position).getImagePath());
-            drawableRequestBuilder.into(viewHolder.cardImage);
-
-            viewHolder.cardImage.setImageDrawable(drawableRequestBuilder.getPlaceholderDrawable());
-            return rowView;
-        }
     }
 }
