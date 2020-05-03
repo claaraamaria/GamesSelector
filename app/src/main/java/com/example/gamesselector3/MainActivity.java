@@ -25,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview_item_click_event);
 
-        listView = (ListView) findViewById(R.id.list);
-        String[] values = new String[]{"Ball Games",
+        listView = findViewById(R.id.list);
+        String[] values = new String[]{
+                "Ball Games",
                 "Board Games",
                 "Drinking Games",
                 "Card Games",

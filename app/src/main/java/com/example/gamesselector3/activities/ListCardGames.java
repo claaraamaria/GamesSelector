@@ -1,22 +1,11 @@
 package com.example.gamesselector3.activities;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
 import com.example.gamesselector3.Data;
 import com.example.gamesselector3.FactoryCardsInfo;
+import com.example.gamesselector3.GameType;
 import com.example.gamesselector3.GamesAdapter;
 import com.example.gamesselector3.R;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
@@ -26,9 +15,8 @@ import java.util.List;
 
 public class ListCardGames extends GamesActivity {
 
-    public static GamesAdapter myAppAdapter;
-    public static ViewHolder viewHolder;
-    private List<Data> array;
+    public GamesAdapter gamesAdapter;
+    private List<Data> dataList;
     private SwipeFlingAdapterView flingContainer;
 
     @Override
@@ -38,9 +26,9 @@ public class ListCardGames extends GamesActivity {
 
         flingContainer = findViewById(R.id.frame);
 
-        array = FactoryCardsInfo.getCardsInfo("ListCardGames");
-        myAppAdapter = new GamesAdapter(array, ListCardGames.this);
-        flingContainer.setAdapter(myAppAdapter);
+        dataList = FactoryCardsInfo.getCardsInfo(GameType.valueOfLabel("Card Games"));
+        gamesAdapter = new GamesAdapter(dataList, ListCardGames.this);
+        flingContainer.setAdapter(gamesAdapter);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
@@ -49,8 +37,8 @@ public class ListCardGames extends GamesActivity {
 
             @Override
             public void onLeftCardExit(Object dataObject) {
-                array.remove(0);
-                myAppAdapter.notifyDataSetChanged();
+                dataList.remove(0);
+                gamesAdapter.notifyDataSetChanged();
                 //Do something on the left!
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
@@ -59,8 +47,8 @@ public class ListCardGames extends GamesActivity {
             @Override
             public void onRightCardExit(Object dataObject) {
 
-                array.remove(0);
-                myAppAdapter.notifyDataSetChanged();
+                dataList.remove(0);
+                gamesAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -87,7 +75,7 @@ public class ListCardGames extends GamesActivity {
                 View view = flingContainer.getSelectedView();
                 view.findViewById(R.id.background).setAlpha(0);
 
-                myAppAdapter.notifyDataSetChanged();
+                gamesAdapter.notifyDataSetChanged();
             }
         });
     }
