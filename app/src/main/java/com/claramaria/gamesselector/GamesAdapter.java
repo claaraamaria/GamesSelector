@@ -1,4 +1,4 @@
-package com.example.gamesselector3;
+package com.claramaria.gamesselector;
 
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -8,15 +8,15 @@ import android.widget.BaseAdapter;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
-import com.example.gamesselector3.activities.GamesActivity;
-import com.example.gamesselector3.activities.ViewHolder;
+import com.claramaria.gamesselector.activities.GamesActivity;
+import com.claramaria.gamesselector.activities.ViewHolder;
 
 import java.util.List;
 
 public class GamesAdapter extends BaseAdapter {
 
-    private GamesActivity gamesActivity;
-    private List<Data> parkingList;
+    private final GamesActivity gamesActivity;
+    private final List<Data> parkingList;
 
     public GamesAdapter(List<Data> dataList, GamesActivity activity) {
         this.parkingList = dataList;
@@ -42,16 +42,13 @@ public class GamesAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
 
         View rowView = convertView;
-
-
-        if (rowView == null) {
-
+        if (convertView == null) {
             LayoutInflater inflater = gamesActivity.getLayoutInflater();
             rowView = inflater.inflate(R.layout.item, parent, false);
             // configure view holder
             ViewHolder viewHolder = new ViewHolder();
             gamesActivity.setViewHolder(viewHolder);
-            viewHolder.DataText = rowView.findViewById(R.id.bookText);
+            viewHolder.dataText = rowView.findViewById(R.id.bookText);
             viewHolder.background = rowView.findViewById(R.id.background);
             viewHolder.cardImage = rowView.findViewById(R.id.cardImage);
             rowView.setTag(viewHolder);
@@ -59,7 +56,7 @@ public class GamesAdapter extends BaseAdapter {
         } else {
             gamesActivity.setViewHolder((ViewHolder) convertView.getTag());
         }
-        gamesActivity.getViewHolder().DataText.setText(parkingList.get(position).getDescription());
+        gamesActivity.getViewHolder().dataText.setText(parkingList.get(position).getDescription());
 
         RequestBuilder<Drawable> drawableRequestBuilder = Glide.with(gamesActivity).load(parkingList.get(position).getImagePath());
         drawableRequestBuilder.into(gamesActivity.getViewHolder().cardImage);

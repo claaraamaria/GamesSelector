@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.example.gamesselector3"
+<manifest package="com.claramaria.gamesselector"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
@@ -7,8 +7,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="@xml/backup_descriptor">
+        <activity android:name="com.claramaria.gamesselector.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -16,30 +17,30 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.ListBallGames">
+        <activity android:name="com.claramaria.gamesselector.activities.ListBallGames">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.ListDrinkingGames">
+        <activity android:name="com.claramaria.gamesselector.activities.ListDrinkingGames">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.ListBoardGames">
+        <activity android:name="com.claramaria.gamesselector.activities.ListBoardGames">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.ListCardGames">
+        <activity android:name="com.claramaria.gamesselector.activities.ListCardGames">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ListInteractiveGames">
+        <activity android:name="com.claramaria.gamesselector.activities.ListInteractiveGames">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

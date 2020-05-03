@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:background="#fff"
     android:orientation="vertical"
-    tools:context="com.example.gamesselector3.MainActivity"
+    tools:context="com.claramaria.gamesselector.MainActivity"
     android:weightSum="1">
 
     <ListView

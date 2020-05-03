@@ -1,4 +1,4 @@
-package com.example.gamesselector3;
+package com.claramaria.gamesselector;
 
 import java.util.ArrayList;
 import java.util.List;

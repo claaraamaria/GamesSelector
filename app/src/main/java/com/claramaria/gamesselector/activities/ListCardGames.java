@@ -1,21 +1,21 @@
-package com.example.gamesselector3.activities;
+package com.claramaria.gamesselector.activities;
 
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.gamesselector3.Data;
-import com.example.gamesselector3.FactoryCardsInfo;
-import com.example.gamesselector3.GameType;
-import com.example.gamesselector3.GamesAdapter;
-import com.example.gamesselector3.R;
+import com.claramaria.gamesselector.Data;
+import com.claramaria.gamesselector.FactoryCardsInfo;
+import com.claramaria.gamesselector.GameType;
+import com.claramaria.gamesselector.GamesAdapter;
+import com.claramaria.gamesselector.R;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.List;
 
 
-public class ListBoardGames extends GamesActivity {
+public class ListCardGames extends GamesActivity {
 
-    public GamesAdapter gamesAdapter;
+    private GamesAdapter gamesAdapter;
     private List<Data> dataList;
     private SwipeFlingAdapterView flingContainer;
 
@@ -26,8 +26,8 @@ public class ListBoardGames extends GamesActivity {
 
         flingContainer = findViewById(R.id.frame);
 
-        dataList = FactoryCardsInfo.getCardsInfo(GameType.valueOfLabel("Board Games"));
-        gamesAdapter = new GamesAdapter(dataList, ListBoardGames.this);
+        dataList = FactoryCardsInfo.getCardsInfo(GameType.valueOfLabel("Card Games"));
+        gamesAdapter = new GamesAdapter(dataList, ListCardGames.this);
         flingContainer.setAdapter(gamesAdapter);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override

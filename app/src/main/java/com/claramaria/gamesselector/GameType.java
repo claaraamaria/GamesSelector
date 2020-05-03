@@ -1,4 +1,4 @@
-package com.example.gamesselector3;
+package com.claramaria.gamesselector;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,14 +10,14 @@ public enum GameType {
     CARD_GAMES("Card Games"),
     INTERACTIVE_GAMES("Interactive Games");
 
-    public final String label;
+    private final String label;
     private static final Map<String, GameType> BY_LABEL = new HashMap<>();
     static {
         for (GameType e: values()) {
             BY_LABEL.put(e.label, e);
         }
     }
-    private GameType(String label) {
+    GameType(String label) {
         this.label = label;
 
     }

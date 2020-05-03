@@ -1,10 +1,10 @@
-package com.example.gamesselector3;
+package com.claramaria.gamesselector;
 
 public class Data {
 
-    private String description;
+    private final String description;
 
-    private String imagePath;
+    private final String imagePath;
 
     public Data(String imagePath, String description) {
         this.imagePath = imagePath;
