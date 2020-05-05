@@ -9,7 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:fullBackupContent="@xml/backup_descriptor">
-        <activity android:name="com.claramaria.gamesselector.MainActivity">
+        <activity
+            android:name="com.claramaria.gamesselector.MainActivity"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,30 +19,41 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.claramaria.gamesselector.activities.ListBallGames">
+        <activity
+            android:name="com.claramaria.gamesselector.activities.ListBallGames"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <activity android:name="com.claramaria.gamesselector.activities.ListDrinkingGames">
+        <activity
+            android:name="com.claramaria.gamesselector.activities.ListDrinkingGames"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <activity android:name="com.claramaria.gamesselector.activities.ListBoardGames">
+        <activity
+            android:name="com.claramaria.gamesselector.activities.ListBoardGames"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <activity android:name="com.claramaria.gamesselector.activities.ListCardGames">
+        <activity
+            android:name="com.claramaria.gamesselector.activities.ListCardGames"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name="com.claramaria.gamesselector.activities.ListInteractiveGames">
+
+        <activity
+            android:name="com.claramaria.gamesselector.activities.ListInteractiveGames"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
