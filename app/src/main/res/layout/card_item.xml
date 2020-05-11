@@ -40,7 +40,6 @@
         android:orientation="vertical">
 
         <FrameLayout
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
@@ -50,7 +49,7 @@
                 android:layout_height="200dp"
                 android:padding="4dp"
                 android:scaleType="centerCrop"
-                android:contentDescription="TODO" />
+                android:contentDescription="@string/description" />
         </FrameLayout>
 
         <LinearLayout

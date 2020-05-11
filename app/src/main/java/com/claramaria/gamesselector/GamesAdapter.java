@@ -44,7 +44,7 @@ public class GamesAdapter extends BaseAdapter {
         View rowView = convertView;
         if (convertView == null) {
             LayoutInflater inflater = gamesActivity.getLayoutInflater();
-            rowView = inflater.inflate(R.layout.item, parent, false);
+            rowView = inflater.inflate(R.layout.card_item, parent, false);
             // configure view holder
             ViewHolder viewHolder = new ViewHolder();
             gamesActivity.setViewHolder(viewHolder);

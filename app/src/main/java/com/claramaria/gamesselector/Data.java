@@ -4,9 +4,9 @@ public class Data {
 
     private final String description;
 
-    private final String imagePath;
+    private final int imagePath;
 
-    public Data(String imagePath, String description) {
+    public Data(int imagePath, String description) {
         this.imagePath = imagePath;
         this.description = description;
     }
@@ -15,7 +15,7 @@ public class Data {
         return description;
     }
 
-    public String getImagePath() {
+    public int getImagePath() {
         return imagePath;
     }
 

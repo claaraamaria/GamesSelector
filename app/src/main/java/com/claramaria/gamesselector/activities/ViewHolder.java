@@ -9,5 +9,4 @@ public class ViewHolder {
     public TextView dataText;
     public ImageView cardImage;
 
-
 }
