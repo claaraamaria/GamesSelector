@@ -3,7 +3,7 @@ package com.claramaria.gamesselector.activities;
 import android.os.Bundle;
 import android.view.View;
 
-import com.claramaria.gamesselector.Data;
+import com.claramaria.gamesselector.CardImagesData;
 import com.claramaria.gamesselector.FactoryCardsInfo;
 import com.claramaria.gamesselector.GameType;
 import com.claramaria.gamesselector.GamesAdapter;
@@ -16,7 +16,7 @@ import java.util.List;
 public class ListBallGames extends GamesActivity {
 
     private GamesAdapter gamesAdapter;
-    private List<Data> dataList;
+    private List<CardImagesData> dataList;
     private SwipeFlingAdapterView flingContainer;
 
     @Override

@@ -1,21 +1,19 @@
 package com.claramaria.gamesselector;
 
-public class Data {
-
+public class CardImagesData {
     private final String description;
-
     private final int imagePath;
 
-    public Data(int imagePath, String description) {
+    CardImagesData(int imagePath, String description) {
         this.imagePath = imagePath;
         this.description = description;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 
-    public int getImagePath() {
+    int getImagePath() {
         return imagePath;
     }
 

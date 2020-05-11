@@ -16,9 +16,9 @@ import java.util.List;
 public class GamesAdapter extends BaseAdapter {
 
     private final GamesActivity gamesActivity;
-    private final List<Data> parkingList;
+    private final List<CardImagesData> parkingList;
 
-    public GamesAdapter(List<Data> dataList, GamesActivity activity) {
+    public GamesAdapter(List<CardImagesData> dataList, GamesActivity activity) {
         this.parkingList = dataList;
         gamesActivity = activity;
     }
