@@ -4,4 +4,6 @@
     <string name="first_line">First Line</string>
     <string name="second_line">Second Line</string>
     <string name="icons_description">Icons will come here</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
