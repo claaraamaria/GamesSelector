@@ -20,6 +20,7 @@ import com.claramaria.gamesselector.activities.ListCardGames;
 import com.claramaria.gamesselector.activities.ListDrinkingGames;
 import com.claramaria.gamesselector.activities.ListInteractiveGames;
 import com.claramaria.gamesselector.fragments.ChatFragment;
+import com.claramaria.gamesselector.fragments.ListFragment;
 import com.claramaria.gamesselector.fragments.MessageFragment;
 import com.claramaria.gamesselector.fragments.ProfileFragement;
 import com.google.android.material.navigation.NavigationView;
@@ -35,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview_item);
 
-        createList();
-        buildRecyclerView();
+        //createList();
+       // buildRecyclerView();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
+                    case R.id.nav_list:
+                        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new ListFragment()).commit();
+                        break;
                     case R.id.nav_message:
                         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new MessageFragment()).commit();
                         break;
@@ -99,42 +103,42 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void buildRecyclerView() {
-        RecyclerView mRecyclerView = findViewById(R.id.recyclerView);
-        mRecyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        ListAdapter mAdapter = new ListAdapter(mList);
-
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
-
-        mAdapter.setOnItemClickListener(new ListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Intent myIntent;
-                switch (position) {
-                    case 0:
-                        myIntent = new Intent(MainActivity.this, ListBallGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                    case 1:
-                        myIntent = new Intent(MainActivity.this, ListBoardGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                    case 2:
-                        myIntent = new Intent(MainActivity.this, ListDrinkingGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                    case 3:
-                        myIntent = new Intent(MainActivity.this, ListCardGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                    case 4:
-                        myIntent = new Intent(MainActivity.this, ListInteractiveGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                }
-            }
-        });
-    }
+//    private void buildRecyclerView() {
+//        RecyclerView mRecyclerView = findViewById(R.id.recyclerView);
+//        mRecyclerView.setHasFixedSize(true);
+//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+//        ListAdapter mAdapter = new ListAdapter(getBaseContext(),mList);
+//
+//        mRecyclerView.setLayoutManager(mLayoutManager);
+//        mRecyclerView.setAdapter(mAdapter);
+//
+//        mAdapter.setOnItemClickListener(new ListAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(int position) {
+//                Intent myIntent;
+//                switch (position) {
+//                    case 0:
+//                        myIntent = new Intent(MainActivity.this, ListBallGames.class);
+//                        startActivityForResult(myIntent, 0);
+//                        break;
+//                    case 1:
+//                        myIntent = new Intent(MainActivity.this, ListBoardGames.class);
+//                        startActivityForResult(myIntent, 0);
+//                        break;
+//                    case 2:
+//                        myIntent = new Intent(MainActivity.this, ListDrinkingGames.class);
+//                        startActivityForResult(myIntent, 0);
+//                        break;
+//                    case 3:
+//                        myIntent = new Intent(MainActivity.this, ListCardGames.class);
+//                        startActivityForResult(myIntent, 0);
+//                        break;
+//                    case 4:
+//                        myIntent = new Intent(MainActivity.this, ListInteractiveGames.class);
+//                        startActivityForResult(myIntent, 0);
+//                        break;
+//                }
+//            }
+//        });
+//    }
 }

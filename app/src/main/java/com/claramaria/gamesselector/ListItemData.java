@@ -8,7 +8,7 @@ public class ListItemData implements Parcelable {
     private String mText1;
     private String mText2;
 
-    ListItemData(int imageResource, String text1, String text2) {
+    public ListItemData(int imageResource, String text1, String text2) {
         mImageResource = imageResource;
         mText1 = text1;
         mText2 = text2;
