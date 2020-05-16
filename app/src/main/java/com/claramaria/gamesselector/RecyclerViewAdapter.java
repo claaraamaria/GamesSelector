@@ -16,14 +16,16 @@ import com.claramaria.gamesselector.activities.ListBoardGames;
 import com.claramaria.gamesselector.activities.ListCardGames;
 import com.claramaria.gamesselector.activities.ListDrinkingGames;
 import com.claramaria.gamesselector.activities.ListInteractiveGames;
+import com.claramaria.gamesselector.fragments.RecyclerViewFragment;
 
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+    private final OnItemClickListener mListener;
     private ArrayList<ListItemData> mList;
 
     public interface OnItemClickListener {
-        void onItemClick(int position, Context context);
+        void onItemClick(int position);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -43,7 +45,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     if (listener != null) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
-                            listener.onItemClick(position, v.getContext());
+                            listener.onItemClick(position);
                         }
                     }
                 }
@@ -51,56 +53,34 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    public RecyclerViewAdapter(ArrayList<ListItemData> list) {
+    public RecyclerViewAdapter(Context context, ArrayList<ListItemData> list, OnItemClickListener listener) {
         mList = list;
+        mListener = listener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
-        OnItemClickListener mListener = new OnItemClickListener() {
-            @Override
-            public void onItemClick(int position, Context context) {
-                Intent myIntent;
-                switch (position) {
-                    case 0:
-                        myIntent = new Intent(context, ListBallGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                    case 1:
-                        myIntent = new Intent(context, ListBoardGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                    case 2:
-                        myIntent = new Intent(context, ListDrinkingGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                    case 3:
-                        myIntent = new Intent(context, ListCardGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                    case 4:
-                        myIntent = new Intent(context, ListInteractiveGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                }
-            }
-        };
+
         return new ViewHolder(view, mListener);
     }
 
-    private void startActivityForResult(Intent myIntent, int index) {
-        //TODO figure out how call others Activity
-    }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         ListItemData currentItem = mList.get(position);
 
         holder.mImageView.setImageResource(currentItem.getImageResource());
         holder.mTextView1.setText(currentItem.getText1());
         holder.mTextView2.setText(currentItem.getText2());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onItemClick(position);
+            }
+        });
     }
 
     @Override

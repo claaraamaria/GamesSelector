@@ -28,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview_item);
 
-        //createList();
-       // buildRecyclerView();
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -95,42 +92,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-   /* private void buildRecyclerView() {
-        RecyclerView mRecyclerView = findViewById(R.id.recyclerView);
-        mRecyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        RecyclerViewAdapter mAdapter = new RecyclerViewAdapter(getBaseContext(),mList);
-
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
-
-        mAdapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Intent myIntent;
-                switch (position) {
-                    case 0:
-                        myIntent = new Intent(MainActivity.this, ListBallGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                    case 1:
-                        myIntent = new Intent(MainActivity.this, ListBoardGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                    case 2:
-                        myIntent = new Intent(MainActivity.this, ListDrinkingGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                    case 3:
-                        myIntent = new Intent(MainActivity.this, ListCardGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                    case 4:
-                        myIntent = new Intent(MainActivity.this, ListInteractiveGames.class);
-                        startActivityForResult(myIntent, 0);
-                        break;
-                }
-            }
-        });
-    }*/
 }
