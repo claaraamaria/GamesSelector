@@ -20,26 +20,26 @@
             android:contentDescription="@string/icons_description" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="55dp"
             android:layout_marginTop="2dp"
-            android:text="@string/first_line"
+            android:text="@string/title"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/description_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView"
+            android:layout_below="@+id/title"
             android:layout_marginStart="8dp"
             android:layout_toEndOf="@+id/imageView"
-            android:text="@string/second_line"
+            android:text="@string/description_text"
             android:textSize="15sp" />
 
     </RelativeLayout>

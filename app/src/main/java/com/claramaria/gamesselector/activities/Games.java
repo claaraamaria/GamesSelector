@@ -2,8 +2,10 @@ package com.claramaria.gamesselector.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.claramaria.gamesselector.model.ViewHolder;
 
-public abstract class GamesActivity extends AppCompatActivity {
+
+public abstract class Games extends AppCompatActivity {
     private ViewHolder viewHolder;
 
     public ViewHolder getViewHolder() {

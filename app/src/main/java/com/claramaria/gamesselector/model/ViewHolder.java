@@ -1,4 +1,4 @@
-package com.claramaria.gamesselector.activities;
+package com.claramaria.gamesselector.model;
 
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -8,5 +8,4 @@ public class ViewHolder {
     public FrameLayout background;
     public TextView dataText;
     public ImageView cardImage;
-
 }

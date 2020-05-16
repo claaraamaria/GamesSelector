@@ -1,7 +1,6 @@
-package com.claramaria.gamesselector;
+package com.claramaria.gamesselector.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.claramaria.gamesselector.activities.ListBallGames;
-import com.claramaria.gamesselector.activities.ListBoardGames;
-import com.claramaria.gamesselector.activities.ListCardGames;
-import com.claramaria.gamesselector.activities.ListDrinkingGames;
-import com.claramaria.gamesselector.activities.ListInteractiveGames;
-import com.claramaria.gamesselector.fragments.RecyclerViewFragment;
+import com.claramaria.gamesselector.R;
+import com.claramaria.gamesselector.pojos.GameInfo;
 
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private final OnItemClickListener mListener;
-    private ArrayList<ListItemData> mList;
+    private ArrayList<GameInfo> mList;
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -36,8 +31,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.imageView);
-            mTextView1 = itemView.findViewById(R.id.textView);
-            mTextView2 = itemView.findViewById(R.id.textView2);
+            mTextView1 = itemView.findViewById(R.id.title);
+            mTextView2 = itemView.findViewById(R.id.description_text);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -53,7 +48,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    public RecyclerViewAdapter(Context context, ArrayList<ListItemData> list, OnItemClickListener listener) {
+    public RecyclerViewAdapter(Context context, ArrayList<GameInfo> list, OnItemClickListener listener) {
         mList = list;
         mListener = listener;
     }
@@ -69,11 +64,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        ListItemData currentItem = mList.get(position);
+        GameInfo currentItem = mList.get(position);
 
         holder.mImageView.setImageResource(currentItem.getImageResource());
-        holder.mTextView1.setText(currentItem.getText1());
-        holder.mTextView2.setText(currentItem.getText2());
+        holder.mTextView1.setText(currentItem.getTitle());
+        holder.mTextView2.setText(currentItem.getDescription());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

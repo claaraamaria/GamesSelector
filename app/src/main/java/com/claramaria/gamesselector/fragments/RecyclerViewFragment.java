@@ -12,20 +12,20 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.claramaria.gamesselector.ListItemData;
+import com.claramaria.gamesselector.pojos.GameInfo;
 import com.claramaria.gamesselector.R;
-import com.claramaria.gamesselector.RecyclerViewAdapter;
-import com.claramaria.gamesselector.activities.ListBallGames;
-import com.claramaria.gamesselector.activities.ListBoardGames;
-import com.claramaria.gamesselector.activities.ListCardGames;
-import com.claramaria.gamesselector.activities.ListDrinkingGames;
-import com.claramaria.gamesselector.activities.ListInteractiveGames;
+import com.claramaria.gamesselector.adapters.RecyclerViewAdapter;
+import com.claramaria.gamesselector.activities.BallGames;
+import com.claramaria.gamesselector.activities.BoardGames;
+import com.claramaria.gamesselector.activities.CardGames;
+import com.claramaria.gamesselector.activities.DrinkingGames;
+import com.claramaria.gamesselector.activities.InteractiveGames;
 
 import java.util.ArrayList;
 
 public class RecyclerViewFragment extends Fragment implements RecyclerViewAdapter.OnItemClickListener{
     private View mView;
-    private ArrayList<ListItemData> mList;
+    private ArrayList<GameInfo> mList;
 
     public RecyclerViewFragment() {
     }
@@ -51,11 +51,11 @@ public class RecyclerViewFragment extends Fragment implements RecyclerViewAdapte
 
     private void createList() {
         mList = new ArrayList<>();
-        mList.add(new ListItemData(R.drawable.ic_ball, "Ball Games", "For this kind of games you will only need a ball of any kind and some play mood."));
-        mList.add(new ListItemData(R.drawable.ic_cards, "Board Games", "If you have a board game, but not enough players, come here to search your team."));
-        mList.add(new ListItemData(R.drawable.ic_drink, "Drinking Games", "Are you 18+ and want to have some fun on a night with a some new people?"));
-        mList.add(new ListItemData(R.drawable.ic_cards, "Card Games", "What can you do with a deck of cards? Maybe some new friends! "));
-        mList.add(new ListItemData(R.drawable.ic_run, "Interactive Games", "If you have some imagination and no items to play some games, please come here."));
+        mList.add(new GameInfo(R.drawable.ic_ball, "Ball Games", "For this kind of games you will only need a ball of any kind and some play mood."));
+        mList.add(new GameInfo(R.drawable.ic_cards, "Board Games", "If you have a board game, but not enough players, come here to search your team."));
+        mList.add(new GameInfo(R.drawable.ic_drink, "Drinking Games", "Are you 18+ and want to have some fun on a night with a some new people?"));
+        mList.add(new GameInfo(R.drawable.ic_cards, "Card Games", "What can you do with a deck of cards? Maybe some new friends! "));
+        mList.add(new GameInfo(R.drawable.ic_run, "Interactive Games", "If you have some imagination and no items to play some games, please come here."));
 
     }
 
@@ -64,23 +64,23 @@ public class RecyclerViewFragment extends Fragment implements RecyclerViewAdapte
         Intent myIntent;
         switch (position) {
             case 0:
-                myIntent = new Intent(getContext(), ListBallGames.class);
+                myIntent = new Intent(getContext(), BallGames.class);
                 startActivityForResult(myIntent, 0);
                 break;
             case 1:
-                myIntent = new Intent(getContext(), ListBoardGames.class);
+                myIntent = new Intent(getContext(), BoardGames.class);
                 startActivityForResult(myIntent, 0);
                 break;
             case 2:
-                myIntent = new Intent(getContext(), ListDrinkingGames.class);
+                myIntent = new Intent(getContext(), DrinkingGames.class);
                 startActivityForResult(myIntent, 0);
                 break;
             case 3:
-                myIntent = new Intent(getContext(), ListCardGames.class);
+                myIntent = new Intent(getContext(), CardGames.class);
                 startActivityForResult(myIntent, 0);
                 break;
             case 4:
-                myIntent = new Intent(getContext(), ListInteractiveGames.class);
+                myIntent = new Intent(getContext(), InteractiveGames.class);
                 startActivityForResult(myIntent, 0);
                 break;
         }

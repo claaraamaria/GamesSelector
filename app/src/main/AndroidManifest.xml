@@ -21,7 +21,7 @@
         </activity>
 
         <activity
-            android:name="com.claramaria.gamesselector.activities.ListBallGames"
+            android:name="com.claramaria.gamesselector.activities.BallGames"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +29,7 @@
         </activity>
 
         <activity
-            android:name="com.claramaria.gamesselector.activities.ListDrinkingGames"
+            android:name="com.claramaria.gamesselector.activities.DrinkingGames"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +37,7 @@
         </activity>
 
         <activity
-            android:name="com.claramaria.gamesselector.activities.ListBoardGames"
+            android:name="com.claramaria.gamesselector.activities.BoardGames"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,7 +45,7 @@
         </activity>
 
         <activity
-            android:name="com.claramaria.gamesselector.activities.ListCardGames"
+            android:name="com.claramaria.gamesselector.activities.CardGames"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,7 +53,7 @@
         </activity>
 
         <activity
-            android:name="com.claramaria.gamesselector.activities.ListInteractiveGames"
+            android:name="com.claramaria.gamesselector.activities.InteractiveGames"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

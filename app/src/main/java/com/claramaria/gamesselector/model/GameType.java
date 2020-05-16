@@ -1,4 +1,4 @@
-package com.claramaria.gamesselector;
+package com.claramaria.gamesselector.model;
 
 import java.util.HashMap;
 import java.util.Map;

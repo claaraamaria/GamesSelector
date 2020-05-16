@@ -1,19 +1,19 @@
-package com.claramaria.gamesselector;
+package com.claramaria.gamesselector.pojos;
 
-public class CardImagesData {
+public class CardImages {
     private final String description;
     private final int imagePath;
 
-    CardImagesData(int imagePath, String description) {
+    public CardImages(int imagePath, String description) {
         this.imagePath = imagePath;
         this.description = description;
     }
 
-    String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    int getImagePath() {
+    public int getImagePath() {
         return imagePath;
     }
 

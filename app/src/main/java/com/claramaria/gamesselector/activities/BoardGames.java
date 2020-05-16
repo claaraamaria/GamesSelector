@@ -3,20 +3,20 @@ package com.claramaria.gamesselector.activities;
 import android.os.Bundle;
 import android.view.View;
 
-import com.claramaria.gamesselector.CardImagesData;
-import com.claramaria.gamesselector.FactoryCardsInfo;
-import com.claramaria.gamesselector.GameType;
-import com.claramaria.gamesselector.GamesAdapter;
+import com.claramaria.gamesselector.pojos.CardImages;
+import com.claramaria.gamesselector.utils.FactoryCardsInfo;
+import com.claramaria.gamesselector.model.GameType;
+import com.claramaria.gamesselector.adapters.GamesAdapter;
 import com.claramaria.gamesselector.R;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.List;
 
 
-public class ListDrinkingGames extends GamesActivity {
+public class BoardGames extends Games {
 
     private GamesAdapter gamesAdapter;
-    private List<CardImagesData> dataList;
+    private List<CardImages> dataList;
     private SwipeFlingAdapterView flingContainer;
 
     @Override
@@ -26,8 +26,8 @@ public class ListDrinkingGames extends GamesActivity {
 
         flingContainer = findViewById(R.id.frame);
 
-        dataList = FactoryCardsInfo.getCardsInfo(GameType.valueOfLabel("Drinking Games"));
-        gamesAdapter = new GamesAdapter(dataList, ListDrinkingGames.this);
+        dataList = FactoryCardsInfo.getCardsInfo(GameType.valueOfLabel("Board Games"));
+        gamesAdapter = new GamesAdapter(dataList, BoardGames.this);
         flingContainer.setAdapter(gamesAdapter);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
