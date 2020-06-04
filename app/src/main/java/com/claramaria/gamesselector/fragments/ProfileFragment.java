@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.claramaria.gamesselector.R;
 
-public class ProfileFragement extends Fragment {
+public class ProfileFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

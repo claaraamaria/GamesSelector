@@ -24,7 +24,6 @@ import com.claramaria.gamesselector.activities.InteractiveGames;
 import java.util.ArrayList;
 
 public class RecyclerViewFragment extends Fragment implements RecyclerViewAdapter.OnItemClickListener{
-    private View mView;
     private ArrayList<GameInfo> mList;
 
     public RecyclerViewFragment() {
