@@ -1,15 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_green_light">
+    android:background="#F1EDED"
+    tools:context=".fragments.ProfileFragment">
 
-    <TextView
-        android:id="@+id/id_fragment_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="180dp"
+           android:background="@color/colorPrimaryDark">
 
-</RelativeLayout>
+       </RelativeLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="120dp"
+           android:orientation="horizontal"
+           android:layout_marginTop="100dp">
+
+           <ImageView
+               android:id="@+id/avatar"
+               android:layout_width="120dp"
+               android:layout_height="120dp"
+               android:layout_marginStart="20dp"
+               android:background="@color/colorPrimary"
+               android:padding="5dp"
+               android:src="@drawable/ic_add_image"/>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
+
+               <TextView
+                   android:id="@+id/profName"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="5dp"
+                   android:textColor="@color/colorWhite"
+                   android:layout_marginTop="5dp"
+                   android:textSize="25sp"/>
+
+               <TextView
+                   android:id="@+id/profEmail"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="5dp"
+                   android:textColor="@color/colorWhite"/>
+
+               <TextView
+                   android:id="@+id/profPhone"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginStart="5dp"
+                   android:textColor="@color/colorWhite"/>
+
+           </LinearLayout>
+
+       </LinearLayout>
+
+   </RelativeLayout>
+
+</ScrollView>

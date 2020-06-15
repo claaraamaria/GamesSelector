@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview_item);
 
-        addFragment();
+        //addFragment();
 
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_list);
 
@@ -77,17 +77,17 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RecyclerViewFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_list);
-        }*/
+        }
     }
 
-/*    @Override
+    @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
-    }*/
+    }
 
     public void addFragment() {
         LoginFragment fragment = new LoginFragment();
