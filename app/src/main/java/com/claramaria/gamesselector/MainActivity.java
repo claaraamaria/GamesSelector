@@ -1,10 +1,8 @@
 package com.claramaria.gamesselector;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,7 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.claramaria.gamesselector.fragments.CallbackFragment;
-import com.claramaria.gamesselector.fragments.ChatFragment;
+import com.claramaria.gamesselector.fragments.FriendsFragment;
 import com.claramaria.gamesselector.fragments.LoginFragment;
 import com.claramaria.gamesselector.fragments.MessageFragment;
 import com.claramaria.gamesselector.fragments.ProfileFragment;
@@ -41,32 +39,31 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
         drawer = findViewById(R.id.drawer_list);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nav_list:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RecyclerViewFragment()).commit();
-                        break;
-                    case R.id.nav_message:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MessageFragment()).commit();
-                        break;
-                    case R.id.nav_chat:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ChatFragment()).commit();
-                        break;
-                    case R.id.nav_profile:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
-                        break;
-                    case R.id.nav_share:
-                        Toast.makeText(MainActivity.this, "Share", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.nav_send:
-                        Toast.makeText(MainActivity.this, "Send", Toast.LENGTH_SHORT).show();
-                        break;
-                }
-                drawer.closeDrawer(GravityCompat.START);
-                return true;
+        navigationView.setNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nav_list:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RecyclerViewFragment()).commit();
+                    break;
+                case R.id.nav_message:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MessageFragment()).commit();
+                    break;
+                case R.id.nav_chat:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FriendsFragment()).commit();
+                    break;
+                case R.id.nav_profile:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+                    break;
+                case R.id.nav_share:
+                    Toast.makeText(MainActivity.this, "Share", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.nav_send:
+                    Toast.makeText(MainActivity.this, "Send", Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    throw new IllegalStateException("IllegalStateException" + item.getItemId());
             }
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
         });
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -90,11 +87,11 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
     }
 
     public void addFragment() {
-        LoginFragment fragment = new LoginFragment();
-        fragment.setCallbackFragment(this);
+        LoginFragment loginFragment = new LoginFragment();
+        loginFragment.setCallbackFragment(this);
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container, fragment).commit();
+        fragmentTransaction.add(R.id.fragment_container, loginFragment).commit();
     }
 
     public void replaceFragment() {

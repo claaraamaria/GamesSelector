@@ -6,22 +6,25 @@ public class User {
     private String name;
     private String email;
     private String telephone;
-    private String username;
+    private String userName;
 
-    public User(int id, String username, String name, String telephone, String email) {
+    private String image;
+
+    public User(int id, String userName, String name, String telephone, String email, String image) {
         this.id = id;
-        this.username = username;
+        this.userName = userName;
         this.email = email;
         this.name = name;
         this.telephone = telephone;
+        this.image = image;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     public String getName() {
@@ -34,5 +37,13 @@ public class User {
 
     public String getTelephone() {
         return telephone;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -47,7 +47,8 @@ public class SharedPrefManager {
                 sharedPreferences.getString("username", null),
                 sharedPreferences.getString("name", null),
                 sharedPreferences.getString("telephone", null),
-                sharedPreferences.getString("email", null)
+                sharedPreferences.getString("email", null),
+                sharedPreferences.getString("image", null)
                 );
     }
 

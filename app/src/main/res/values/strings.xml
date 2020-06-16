@@ -1,9 +1,19 @@
 <resources>
     <string name="app_name">LudSim</string>
     <string name="description">Image for the current Card</string>
-    <string name="title">Title</string>
-    <string name="description_text">Description Text</string>
+    <string name="title">Title </string>
+    <string name="description_text">Description of the game</string>
     <string name="icons_description">Icons will come here</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="list_of_games">List of Games</string>
+    <string name="chat">Chat</string>
+    <string name="friends">Friends</string>
+    <string name="profile">Profile</string>
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
+    <string name="send">Send</string>
+    <string name="ludsim">LudSim</string>
+    <string name="the_place_where_you_can_find_a_friend">The place where you can find a friend</string>
+    <string name="logo_of_the_app">Logo of the app</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.claramaria.gamesselector.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +16,12 @@ import com.claramaria.gamesselector.storage.SharedPrefManager;
 
 public class ProfileFragment extends Fragment {
 
-    private TextView profileName, profileEmail, profilePhone;
+    private TextView profileName;
+    private TextView profileEmail;
+    private TextView profilePhone;
 
     public ProfileFragment() {
-
+        //required empty public constructor
     }
 
     @Nullable

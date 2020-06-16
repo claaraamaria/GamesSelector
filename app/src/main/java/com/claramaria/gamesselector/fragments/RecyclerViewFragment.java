@@ -27,6 +27,7 @@ public class RecyclerViewFragment extends Fragment implements RecyclerViewAdapte
     private ArrayList<GameInfo> mList;
 
     public RecyclerViewFragment() {
+        //required empty public constructor
     }
 
 
@@ -82,6 +83,8 @@ public class RecyclerViewFragment extends Fragment implements RecyclerViewAdapte
                 myIntent = new Intent(getContext(), InteractiveGames.class);
                 startActivityForResult(myIntent, 0);
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + position);
         }
     }
 }
