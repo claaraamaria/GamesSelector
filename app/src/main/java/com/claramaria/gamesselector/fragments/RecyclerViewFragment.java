@@ -12,14 +12,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.claramaria.gamesselector.pojos.GameInfo;
 import com.claramaria.gamesselector.R;
-import com.claramaria.gamesselector.adapters.RecyclerViewAdapter;
 import com.claramaria.gamesselector.activities.BallGames;
 import com.claramaria.gamesselector.activities.BoardGames;
 import com.claramaria.gamesselector.activities.CardGames;
-import com.claramaria.gamesselector.activities.DrinkingGames;
+import com.claramaria.gamesselector.activities.OverAgeGames;
 import com.claramaria.gamesselector.activities.InteractiveGames;
+import com.claramaria.gamesselector.adapters.RecyclerViewAdapter;
+import com.claramaria.gamesselector.pojos.GameInfo;
 
 import java.util.ArrayList;
 
@@ -36,7 +36,7 @@ public class RecyclerViewFragment extends Fragment implements RecyclerViewAdapte
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View mView = inflater.inflate(R.layout.fragment_list, container, false);
         RecyclerView mRecyclerView = mView.findViewById(R.id.recyclerView);
-        RecyclerViewAdapter mAdapter = new RecyclerViewAdapter(getContext(),mList, this);
+        RecyclerViewAdapter mAdapter = new RecyclerViewAdapter(getContext(), mList, this);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mAdapter);
@@ -72,7 +72,7 @@ public class RecyclerViewFragment extends Fragment implements RecyclerViewAdapte
                 startActivityForResult(myIntent, 0);
                 break;
             case 2:
-                myIntent = new Intent(getContext(), DrinkingGames.class);
+                myIntent = new Intent(getContext(), OverAgeGames.class);
                 startActivityForResult(myIntent, 0);
                 break;
             case 3:

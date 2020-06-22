@@ -1,6 +1,7 @@
 package com.claramaria.gamesselector.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.claramaria.gamesselector.R;
+import com.claramaria.gamesselector.fragments.MessageFragment;
 import com.claramaria.gamesselector.model.User;
 import com.squareup.picasso.Picasso;
 
@@ -42,8 +44,9 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder> {
         holder.mPhone.setText(currentUser.getTelephone());
 
         try {
-            Picasso.get().load(currentUser.getImage())
-                    .placeholder(R.drawable.ic_account_circle_black_24dp)
+            Picasso.get().load(currentUser.getImageUrl())
+                            // .resize(50, 50)
+                            .placeholder(R.drawable.ic_account_circle_black_24dp)
                     .into(holder.mAvatar);
         } catch (Exception e) {
             Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -52,8 +55,9 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "" + currentUser.getEmail(), Toast.LENGTH_SHORT).show();
-                //TODO open the chat on click
+                Intent intent = new Intent(mContext, MessageFragment.class);
+                intent.putExtra("userId", currentUser.getUserId());
+                mContext.startActivity(intent);
             }
         });
     }

@@ -2,25 +2,27 @@ package com.claramaria.gamesselector.model;
 
 public class User {
 
-    private int id;
+
+    private int userId;
     private String name;
     private String email;
     private String telephone;
     private String userName;
+    private String imageUrl;
+    private String pass;
 
-    private String image;
-
-    public User(int id, String userName, String name, String telephone, String email, String image) {
-        this.id = id;
+    public User(int userId, String userName, String name, String telephone, String email, String imageUrl, String pass) {
+        this.userId = userId;
         this.userName = userName;
         this.email = email;
         this.name = name;
         this.telephone = telephone;
-        this.image = image;
+        this.imageUrl = imageUrl;
+        this.pass = pass;
     }
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
     public String getUserName() {
@@ -39,11 +41,19 @@ public class User {
         return telephone;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 }

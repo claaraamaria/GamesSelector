@@ -13,7 +13,7 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import java.util.List;
 
 
-public class DrinkingGames extends Games {
+public class OverAgeGames extends Games {
 
     private GamesAdapter gamesAdapter;
     private List<CardImages> dataList;
@@ -27,7 +27,7 @@ public class DrinkingGames extends Games {
         flingContainer = findViewById(R.id.frame);
 
         dataList = FactoryCardsInfo.getCardsInfo(GameType.valueOfLabel("Drinking Games"));
-        gamesAdapter = new GamesAdapter(dataList, DrinkingGames.this);
+        gamesAdapter = new GamesAdapter(dataList, OverAgeGames.this);
         flingContainer.setAdapter(gamesAdapter);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override

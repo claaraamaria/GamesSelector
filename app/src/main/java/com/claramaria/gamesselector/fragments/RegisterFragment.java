@@ -1,7 +1,6 @@
 package com.claramaria.gamesselector.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,10 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.claramaria.gamesselector.R;
+import com.claramaria.gamesselector.model.User;
 import com.claramaria.gamesselector.server.RESTClient;
-import com.claramaria.gamesselector.storage.SharedPrefManager;
-
-import java.io.IOException;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -38,6 +35,10 @@ public class RegisterFragment extends Fragment {
     private String phone;
     private String userName;
     private String pass;
+
+    public RegisterFragment() {
+        // Required empty public constructor
+    }
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -88,40 +89,30 @@ public class RegisterFragment extends Fragment {
             return;
         }
 
-                /*if (pass.length() < 6) {
-                    etPassword.setError("Password should be at least 6 characters long");
+        if (pass.length() < 8) {
+            etPassword.setError("Password should be at least 8 characters long");
                     etPassword.requestFocus();
                     return;
-                }*/
+        }
 
 
         /* User registration using api call */
         Call<ResponseBody> call = RESTClient
                 .getInstance()
                 .getApi()
-                .createUser(name, userName, email, phone, pass);
+                .createUser(new User(0, userName, name, phone, email, null, pass));
 
- /*       call.enqueue(new Callback<ResponseBody>() {
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    if (response.code() != 200) {
-
-                        Toast.makeText(getContext(), response.errorBody().string(), Toast.LENGTH_SHORT).show();
-                    } else {
-                        String resp = response.body().string();
-                        Toast.makeText(getContext(), resp, Toast.LENGTH_SHORT).show();
-                    }
-                } catch (IOException e) {
-                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-
+                if (response.isSuccessful())
+                    Toast.makeText(getContext(), "User created", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable e) {
                 Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
     }
 }

@@ -14,11 +14,16 @@ import com.claramaria.gamesselector.R;
 import com.claramaria.gamesselector.model.User;
 import com.claramaria.gamesselector.storage.SharedPrefManager;
 
+import java.util.List;
+
+import retrofit2.Callback;
+
 public class ProfileFragment extends Fragment {
 
     private TextView profileName;
     private TextView profileEmail;
     private TextView profilePhone;
+    private CallbackFragment callbackFragment;
 
     public ProfileFragment() {
         //required empty public constructor
@@ -42,5 +47,18 @@ public class ProfileFragment extends Fragment {
         profilePhone.setText(user.getTelephone());
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        profileName = view.findViewById(R.id.profName);
+        profileEmail = view.findViewById(R.id.profEmail);
+        profilePhone = view.findViewById(R.id.profPhone);
+    }
+
+    public void setCallbackFragment(Callback<List<User>> listCallback) {
+        this.callbackFragment = callbackFragment;
     }
 }
