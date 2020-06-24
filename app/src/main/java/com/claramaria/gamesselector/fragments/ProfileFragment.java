@@ -35,10 +35,10 @@ public class ProfileFragment extends Fragment {
         TextView profileName = view.findViewById(R.id.profName);
         TextView profileEmail = view.findViewById(R.id.profEmail);
 
-        User user = SharedPrefManager.getInstance(null).getUser();
+       /* User user = SharedPrefManager.getInstance(null).getUser();
         profileUsername.setText(user.getUserName());
         profileName.setText(user.getName());
-        profileEmail.setText(user.getEmail());
+        profileEmail.setText(user.getEmail());*/
 
         return view;
     }

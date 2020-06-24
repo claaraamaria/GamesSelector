@@ -1,5 +1,6 @@
 package com.claramaria.gamesselector.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.claramaria.gamesselector.MainActivity;
 import com.claramaria.gamesselector.R;
 import com.claramaria.gamesselector.model.User;
 import com.claramaria.gamesselector.server.RESTClient;
@@ -97,12 +99,15 @@ public class LoginFragment extends Fragment implements CallbackFragment {
                     SharedPrefManager sharedPrefManager = SharedPrefManager.getInstance(getContext());
                     sharedPrefManager.saveUser(users.get(0));
 
-                    ProfileFragment profileFragment = new ProfileFragment();
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    startActivity(intent);
+
+                    /*ProfileFragment profileFragment = new ProfileFragment();
                     profileFragment.setCallbackFragment(this);
 
                     fragmentManager = getFragmentManager();
                     fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.add(R.id.fragment_container, profileFragment).addToBackStack(null).commit();
+                    fragmentTransaction.add(R.id.fragment_container, profileFragment).addToBackStack(null).commit();*/
 
                     Toast.makeText(getContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
 

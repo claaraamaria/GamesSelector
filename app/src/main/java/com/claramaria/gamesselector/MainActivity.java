@@ -36,13 +36,13 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview_item);
 
-        addFragment();
+       // addFragment();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_list);
 
-        /*NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
         navigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -76,9 +76,9 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
         toggle.syncState();
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RecyclerViewFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_list);
-        }*/
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).addToBackStack(null).commit();
+            navigationView.setCheckedItem(R.id.nav_profile);
+        }
     }
 
     @Override
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container, loginFragment).commit();
+        fragmentTransaction.add(R.id.fragment_container, loginFragment).addToBackStack(null).commit();
     }
 
     public void replaceFragment() {
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
+        fragmentTransaction.replace(R.id.fragment_container, fragment).addToBackStack(null).commit();
     }
 
     @Override
