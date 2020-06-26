@@ -2,20 +2,52 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activities.MapsActivity">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"/>
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/maps"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/search_bar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:elevation="10dp"
+        android:background="@drawable/white_border">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/autocomplete_fragment"
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/ic_gps"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_gps_fixed_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1021122400786",
+    "firebase_url": "https://ludsim-a1b1f.firebaseio.com",
+    "project_id": "ludsim-a1b1f",
+    "storage_bucket": "ludsim-a1b1f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021122400786:android:c59574f9ce0cb7eb5ebecb",
+        "android_client_info": {
+          "package_name": "com.claramaria.gamesselector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021122400786-17n7jifu46nke7qgs6gom1v8slut8htn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.claramaria.gamesselector",
+            "certificate_hash": "394600ca779b1cf9377103258c920d141ca42b85"
+          }
+        },
+        {
+          "client_id": "1021122400786-aofg3m2078t7m2tmjnk3mr3jgga9djuh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgVFkj6qW5JHbDuL7Ygiqh7HHb6KVTTng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021122400786-aofg3m2078t7m2tmjnk3mr3jgga9djuh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,15 +32,19 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        TextView profileUsername = view.findViewById(R.id.profUsername);
         TextView profileName = view.findViewById(R.id.profName);
+        TextView profileUsername = view.findViewById(R.id.profUsername);
         TextView profileEmail = view.findViewById(R.id.profEmail);
 
-       /* User user = SharedPrefManager.getInstance(null).getUser();
-        profileUsername.setText(user.getUserName());
-        profileName.setText(user.getName());
-        profileEmail.setText(user.getEmail());*/
-
+        SharedPrefManager preferences = SharedPrefManager.getInstance(getContext());
+        if (preferences != null) {
+            User user = preferences.getUser();
+            profileName.setText(user.getName());
+            profileUsername.setText(user.getUserName());
+            profileEmail.setText(user.getEmail());
+        } else {
+            Toast.makeText(getContext(), "Unable to obtain user", Toast.LENGTH_SHORT).show();
+        }
         return view;
     }
 

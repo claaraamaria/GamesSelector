@@ -1,6 +1,5 @@
 package com.claramaria.gamesselector.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.claramaria.gamesselector.MainActivity;
 import com.claramaria.gamesselector.R;
 import com.claramaria.gamesselector.model.User;
 import com.claramaria.gamesselector.server.RESTClient;
@@ -29,6 +27,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginFragment extends Fragment implements CallbackFragment {
+    private static final String TAG = "LoginFragment";
     private EditText etUsername;
     private EditText etPassword;
     private CallbackFragment callbackFragment;
@@ -56,19 +55,18 @@ public class LoginFragment extends Fragment implements CallbackFragment {
         return view;
     }
 
-   /* @Override
+    @Override
     public void onStart() {
         super.onStart();
-        //TODO: check if the user is already logged in to not open the signup fragment
 
-       *//* if(SharedPrefManager.getInstance(getContext()).isLoggedIn()){
+        if (SharedPrefManager.getInstance(getContext()).isLoggedIn()) {
             ProfileFragment profileFragment = new ProfileFragment();
 
             fragmentManager = getFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.add(R.id.fragment_container, profileFragment).addToBackStack(null).commit();
-        }*//*
-    }*/
+        }
+    }
 
     private void userLogin() {
         String userName = etUsername.getText().toString().trim();
@@ -99,15 +97,12 @@ public class LoginFragment extends Fragment implements CallbackFragment {
                     SharedPrefManager sharedPrefManager = SharedPrefManager.getInstance(getContext());
                     sharedPrefManager.saveUser(users.get(0));
 
-                    Intent intent = new Intent(getContext(), MainActivity.class);
-                    startActivity(intent);
-
-                    /*ProfileFragment profileFragment = new ProfileFragment();
+                    ProfileFragment profileFragment = new ProfileFragment();
                     profileFragment.setCallbackFragment(this);
 
                     fragmentManager = getFragmentManager();
                     fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.add(R.id.fragment_container, profileFragment).addToBackStack(null).commit();*/
+                    fragmentTransaction.add(R.id.fragment_container, new RecyclerViewFragment()).addToBackStack(null).commit();
 
                     Toast.makeText(getContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
 
@@ -127,16 +122,12 @@ public class LoginFragment extends Fragment implements CallbackFragment {
         this.callbackFragment = callbackFragment;
     }
 
-    private void replaceFragment() {
+    @Override
+    public void changeFragment() {
         Fragment fragment = new RegisterFragment();
         fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
-    }
-
-    @Override
-    public void changeFragment() {
-        replaceFragment();
     }
 }
