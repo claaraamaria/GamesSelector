@@ -32,9 +32,9 @@ public class RegisterFragment extends Fragment {
     private EditText etPassword;
     private String name;
     private String email;
-    private String phone;
+    private String telephone;
     private String userName;
-    private String pass;
+    private String password;
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -73,9 +73,9 @@ public class RegisterFragment extends Fragment {
     private void userRegister() {
         name = etName.getText().toString().trim();
         email = etEmail.getText().toString().trim();
-        phone = etPhone.getText().toString().trim();
+        telephone = etPhone.getText().toString().trim();
         userName = etUsername.getText().toString().trim();
-        pass = etPassword.getText().toString().trim();
+        password = etPassword.getText().toString().trim();
 
         if (userName.isEmpty()) {
             etUsername.setError("Username is required!");
@@ -83,13 +83,13 @@ public class RegisterFragment extends Fragment {
             return;
         }
 
-        if (pass.isEmpty()) {
+        if (password.isEmpty()) {
             etPassword.setError("Password required");
             etPassword.requestFocus();
             return;
         }
 
-        if (pass.length() < 8) {
+        if (password.length() < 8) {
             etPassword.setError("Password should be at least 8 characters long");
                     etPassword.requestFocus();
                     return;
@@ -97,10 +97,12 @@ public class RegisterFragment extends Fragment {
 
 
         /* User registration using api call */
+        User user = new User();
+        user.setUserId(0); user.setUserName(userName); user.setName(name); user.setTelephone(telephone); user.setEmail(email); user.setImageUrl(null); user.setPassword(password);
         Call<ResponseBody> call = RESTClient
                 .getInstance()
                 .getApi()
-                .createUser(new User(0, userName, name, phone, email, null, pass));
+                .createUser(user);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override

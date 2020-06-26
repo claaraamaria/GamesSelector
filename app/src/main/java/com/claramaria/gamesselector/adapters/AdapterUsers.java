@@ -55,9 +55,11 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(mContext, MessageFragment.class);
                 intent.putExtra("userId", currentUser.getUserId());
-                mContext.startActivity(intent);
+                Toast.makeText(mContext, "To be implemented", Toast.LENGTH_SHORT).show();
+               /*TODO mContext.startActivity(intent);*/
             }
         });
     }

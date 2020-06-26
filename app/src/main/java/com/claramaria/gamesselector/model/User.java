@@ -8,36 +8,59 @@ public class User {
     private String telephone;
     private String userName;
     private String imageUrl;
-    private String pass;
+    private String password;
 
-    public User(int userId, String userName, String name, String telephone, String email, String imageUrl, String pass) {
+    public User() {
+    }
+
+    /*public User(int userId, String userName, String name, String telephone, String email, String imageUrl, String password) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
         this.name = name;
         this.telephone = telephone;
         this.imageUrl = imageUrl;
-        this.pass = pass;
-    }
+        this.password = password;
+    }*/
 
     public int getUserId() {
         return userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getEmail(){
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTelephone() {
         return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getImageUrl() {
@@ -48,11 +71,11 @@ public class User {
         this.imageUrl = imageUrl;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
