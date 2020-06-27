@@ -1,5 +1,11 @@
 package com.claramaria.gamesselector.utils;
 
+import android.content.Context;
+import android.content.Intent;
+
+import com.claramaria.gamesselector.activities.RoomActivity;
+import com.claramaria.gamesselector.model.CardImage;
+
 public class Constants {
     public static final String KEY_ID="id";
     public static final String KEY_EMAIL="email";
@@ -17,4 +23,15 @@ public class Constants {
     public static final String KEY_OWNER_TELEPHONE ="o_telephone";
     public static final String KEY_OWNER_NAME="o_name";
     public static final String KEY_OWNER_IMAGE_URL="o_imageUrl";
+
+
+    public static final String IMAGE_INDEX = "ImageIndex";
+    public static final String DESCRIPTION = "DescriptonKey";
+
+    public static Intent constructIntent(Context ctx, CardImage cardImage) {
+        Intent myIntent = new Intent(ctx, RoomActivity.class);
+        myIntent.putExtra(IMAGE_INDEX, cardImage.getImagePath());
+        myIntent.putExtra(DESCRIPTION, cardImage.getDescription());
+        return myIntent;
+    }
 }

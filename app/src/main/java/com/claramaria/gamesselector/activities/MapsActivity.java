@@ -64,7 +64,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Maps");
+        getSupportActionBar().setTitle("LudSim");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getLocationPermission();

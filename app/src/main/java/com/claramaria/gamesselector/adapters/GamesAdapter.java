@@ -9,18 +9,18 @@ import android.widget.BaseAdapter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.claramaria.gamesselector.R;
-import com.claramaria.gamesselector.model.ViewHolder;
 import com.claramaria.gamesselector.activities.Games;
-import com.claramaria.gamesselector.pojos.CardImages;
+import com.claramaria.gamesselector.model.CardImage;
+import com.claramaria.gamesselector.model.ViewHolder;
 
 import java.util.List;
 
 public class GamesAdapter extends BaseAdapter {
 
     private final Games games;
-    private final List<CardImages> parkingList;
+    private final List<CardImage> parkingList;
 
-    public GamesAdapter(List<CardImages> dataList, Games activity) {
+    public GamesAdapter(List<CardImage> dataList, Games activity) {
         this.parkingList = dataList;
         games = activity;
     }

@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.claramaria.gamesselector.R;
-import com.claramaria.gamesselector.pojos.GameInfo;
+import com.claramaria.gamesselector.model.GameInfo;
 
 import java.util.ArrayList;
 

@@ -3,20 +3,21 @@ package com.claramaria.gamesselector.activities;
 import android.os.Bundle;
 import android.view.View;
 
-import com.claramaria.gamesselector.pojos.CardImages;
-import com.claramaria.gamesselector.utils.FactoryCardsInfo;
-import com.claramaria.gamesselector.model.GameType;
-import com.claramaria.gamesselector.adapters.GamesAdapter;
 import com.claramaria.gamesselector.R;
+import com.claramaria.gamesselector.adapters.GamesAdapter;
+import com.claramaria.gamesselector.model.CardImage;
+import com.claramaria.gamesselector.model.GameType;
+import com.claramaria.gamesselector.utils.Constants;
+import com.claramaria.gamesselector.utils.FactoryCardsInfo;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.List;
 
 
-public class OverAgeGames extends Games {
+public class DrinkingGames extends Games {
 
     private GamesAdapter gamesAdapter;
-    private List<CardImages> dataList;
+    private List<CardImage> dataList;
     private SwipeFlingAdapterView flingContainer;
 
     @Override
@@ -27,7 +28,7 @@ public class OverAgeGames extends Games {
         flingContainer = findViewById(R.id.frame);
 
         dataList = FactoryCardsInfo.getCardsInfo(GameType.valueOfLabel("Drinking Games"));
-        gamesAdapter = new GamesAdapter(dataList, OverAgeGames.this);
+        gamesAdapter = new GamesAdapter(dataList, DrinkingGames.this);
         flingContainer.setAdapter(gamesAdapter);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
@@ -46,9 +47,10 @@ public class OverAgeGames extends Games {
 
             @Override
             public void onRightCardExit(Object dataObject) {
-
                 dataList.remove(0);
                 gamesAdapter.notifyDataSetChanged();
+
+                startActivity(Constants.constructIntent(DrinkingGames.this, dataList.get(0)));
             }
 
             @Override

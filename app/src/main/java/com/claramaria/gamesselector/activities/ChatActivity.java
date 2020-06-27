@@ -26,7 +26,6 @@ import java.util.HashMap;
 
 public class ChatActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
     RecyclerView recyclerView;
     ImageView profileAvatar;
     TextView username;

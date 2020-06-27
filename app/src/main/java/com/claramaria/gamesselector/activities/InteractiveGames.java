@@ -3,11 +3,12 @@ package com.claramaria.gamesselector.activities;
 import android.os.Bundle;
 import android.view.View;
 
-import com.claramaria.gamesselector.pojos.CardImages;
-import com.claramaria.gamesselector.utils.FactoryCardsInfo;
-import com.claramaria.gamesselector.model.GameType;
-import com.claramaria.gamesselector.adapters.GamesAdapter;
 import com.claramaria.gamesselector.R;
+import com.claramaria.gamesselector.adapters.GamesAdapter;
+import com.claramaria.gamesselector.model.CardImage;
+import com.claramaria.gamesselector.model.GameType;
+import com.claramaria.gamesselector.utils.Constants;
+import com.claramaria.gamesselector.utils.FactoryCardsInfo;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
 public class InteractiveGames extends Games {
 
     private GamesAdapter gamesAdapter;
-    private List<CardImages> dataList;
+    private List<CardImage> dataList;
     private SwipeFlingAdapterView flingContainer;
 
     @Override
@@ -46,9 +47,10 @@ public class InteractiveGames extends Games {
 
             @Override
             public void onRightCardExit(Object dataObject) {
-
                 dataList.remove(0);
                 gamesAdapter.notifyDataSetChanged();
+
+                startActivity(Constants.constructIntent(InteractiveGames.this, dataList.get(0)));
             }
 
             @Override

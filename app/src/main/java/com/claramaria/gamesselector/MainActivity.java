@@ -1,6 +1,5 @@
 package com.claramaria.gamesselector;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -12,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.claramaria.gamesselector.activities.MapsActivity;
 import com.claramaria.gamesselector.fragments.CallbackFragment;
 import com.claramaria.gamesselector.fragments.ChatListFragment;
 import com.claramaria.gamesselector.fragments.FriendsFragment;
@@ -70,11 +68,11 @@ public class MainActivity extends AppCompatActivity implements CallbackFragment 
                 case R.id.nav_profile:
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).addToBackStack(null).commit();
                     break;
-                case R.id.nav_maps:
+               /* case R.id.nav_maps:
                     Intent myIntent;
                     myIntent = new Intent(this, MapsActivity.class);
                     startActivityForResult(myIntent, 0);
-                    break;
+                    break;*/ //TODO: remove this code after the bug in mapsActivity is fixed
                 default:
                     throw new IllegalStateException("IllegalStateException" + item.getItemId());
             }

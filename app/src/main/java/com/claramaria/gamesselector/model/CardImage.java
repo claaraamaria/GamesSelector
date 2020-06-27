@@ -1,10 +1,10 @@
-package com.claramaria.gamesselector.pojos;
+package com.claramaria.gamesselector.model;
 
-public class CardImages {
+public class CardImage {
     private final String description;
     private final int imagePath;
 
-    public CardImages(int imagePath, String description) {
+    public CardImage(int imagePath, String description) {
         this.imagePath = imagePath;
         this.description = description;
     }

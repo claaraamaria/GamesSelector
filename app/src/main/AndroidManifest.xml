@@ -50,7 +50,7 @@
         </activity>
 
         <activity
-            android:name="com.claramaria.gamesselector.activities.OverAgeGames"
+            android:name="com.claramaria.gamesselector.activities.DrinkingGames"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -67,6 +67,22 @@
 
         <activity
             android:name="com.claramaria.gamesselector.activities.CardGames"
+            android:screenOrientation="sensorPortrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.claramaria.gamesselector.activities.InteractiveGames"
+            android:screenOrientation="sensorPortrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.claramaria.gamesselector.activities.RoomActivity"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

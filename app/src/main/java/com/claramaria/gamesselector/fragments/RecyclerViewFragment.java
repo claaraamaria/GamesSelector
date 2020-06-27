@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,14 +17,11 @@ import com.claramaria.gamesselector.R;
 import com.claramaria.gamesselector.activities.BallGames;
 import com.claramaria.gamesselector.activities.BoardGames;
 import com.claramaria.gamesselector.activities.CardGames;
+import com.claramaria.gamesselector.activities.DrinkingGames;
 import com.claramaria.gamesselector.activities.InteractiveGames;
-import com.claramaria.gamesselector.activities.OverAgeGames;
 import com.claramaria.gamesselector.adapters.RecyclerViewAdapter;
-import com.claramaria.gamesselector.pojos.GameInfo;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.claramaria.gamesselector.model.GameInfo;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.ArrayList;
 
@@ -91,7 +87,7 @@ public class RecyclerViewFragment extends Fragment implements RecyclerViewAdapte
                 startActivityForResult(myIntent, 0);
                 break;
             case 2:
-                myIntent = new Intent(getContext(), OverAgeGames.class);
+                myIntent = new Intent(getContext(), DrinkingGames.class);
                 startActivityForResult(myIntent, 0);
                 break;
             case 3:

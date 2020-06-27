@@ -3,20 +3,20 @@ package com.claramaria.gamesselector.activities;
 import android.os.Bundle;
 import android.view.View;
 
-import com.claramaria.gamesselector.pojos.CardImages;
-import com.claramaria.gamesselector.utils.FactoryCardsInfo;
-import com.claramaria.gamesselector.model.GameType;
-import com.claramaria.gamesselector.adapters.GamesAdapter;
 import com.claramaria.gamesselector.R;
+import com.claramaria.gamesselector.adapters.GamesAdapter;
+import com.claramaria.gamesselector.model.CardImage;
+import com.claramaria.gamesselector.model.GameType;
+import com.claramaria.gamesselector.utils.Constants;
+import com.claramaria.gamesselector.utils.FactoryCardsInfo;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.List;
 
-
 public class BallGames extends Games {
 
     private GamesAdapter gamesAdapter;
-    private List<CardImages> dataList;
+    private List<CardImage> dataList;
     private SwipeFlingAdapterView flingContainer;
 
     @Override
@@ -32,7 +32,7 @@ public class BallGames extends Games {
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
-
+                //required empty public constructor
             }
 
             @Override
@@ -46,9 +46,10 @@ public class BallGames extends Games {
 
             @Override
             public void onRightCardExit(Object dataObject) {
-
                 dataList.remove(0);
                 gamesAdapter.notifyDataSetChanged();
+
+                startActivity(Constants.constructIntent(BallGames.this, dataList.get(0)));
             }
 
             @Override
