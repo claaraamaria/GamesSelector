@@ -9,20 +9,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.claramaria.gamesselector.R;
+import com.claramaria.gamesselector.adapters.AdapterChat;
+import com.claramaria.gamesselector.model.ChatModel;
 import com.claramaria.gamesselector.model.User;
 import com.claramaria.gamesselector.storage.SharedPrefManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -34,8 +43,11 @@ public class ChatActivity extends AppCompatActivity {
     ImageButton sendBtn;
     String senderUsername;
     String receiverUsername;
+    String receiverImage;
 
     FirebaseAuth firebaseAuth;
+    List<ChatModel> chatList;
+    AdapterChat adapterChat;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -57,6 +69,12 @@ public class ChatActivity extends AppCompatActivity {
         messageEt = findViewById(R.id.messageEt);
         sendBtn = findViewById(R.id.send_btn);
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setStackFromEnd(true);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
         SharedPrefManager preferences = SharedPrefManager.getInstance(ChatActivity.this);
         if (preferences != null) {
             User user = preferences.getTargetUser();
@@ -67,7 +85,7 @@ public class ChatActivity extends AppCompatActivity {
             senderUsername = preferences.getOwner().getUserName();
 
             try{
-                Picasso.get().load(user.getImageUrl()).into(profileAvatar);
+                Picasso.get().load(receiverImage).into(profileAvatar);
             } catch (Exception e){
                 Picasso.get().load(R.drawable.ic_add_image).into(profileAvatar);
             }
@@ -89,16 +107,49 @@ public class ChatActivity extends AppCompatActivity {
                 }
             }
         });
+
+        readMessages();
+
+    }
+
+    private void readMessages() {
+        chatList = new ArrayList<>();
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Chats");
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                chatList.clear();
+                for (DataSnapshot ds : snapshot.getChildren()){
+                    ChatModel chat = ds.getValue(ChatModel.class);
+                    if(chat.getReceiver().equals(senderUsername) && chat.getSender().equals(receiverUsername) || //TODO: bug here
+                            chat.getReceiver().equals(receiverUsername) && chat.getSender().equals(senderUsername)){
+                        chatList.add(chat);
+                    }
+
+                    adapterChat = new AdapterChat(ChatActivity.this, chatList, receiverImage);
+                    adapterChat.notifyDataSetChanged();
+                    recyclerView.setAdapter(adapterChat);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void sendMessage(String message) {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+
         HashMap<String, Object> chatMessage = new HashMap<>();
         chatMessage.put("sender", senderUsername);
         chatMessage.put("receiver", receiverUsername);
         chatMessage.put("message", message);
+        chatMessage.put("timeStamp", timeStamp);
 
         reference.child("Chats").push().setValue(chatMessage);
 
