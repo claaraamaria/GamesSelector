@@ -13,8 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.claramaria.gamesselector.R;
+import com.claramaria.gamesselector.activities.ChatActivity;
 import com.claramaria.gamesselector.fragments.MessageFragment;
 import com.claramaria.gamesselector.model.User;
+import com.claramaria.gamesselector.storage.SharedPrefManager;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -45,7 +47,6 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder> {
 
         try {
             Picasso.get().load(currentUser.getImageUrl())
-                            // .resize(50, 50)
                             .placeholder(R.drawable.ic_account_circle_black_24dp)
                     .into(holder.mAvatar);
         } catch (Exception e) {
@@ -54,12 +55,14 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder> {
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
 
-                Intent intent = new Intent(mContext, MessageFragment.class);
-                intent.putExtra("userId", currentUser.getUserId());
-                Toast.makeText(mContext, "To be implemented", Toast.LENGTH_SHORT).show();
-               /*TODO mContext.startActivity(intent);*/
+                Intent intent = new Intent(mContext, ChatActivity.class);
+                intent.putExtra("userId", currentUser.getUserId());//TODO: use this instead of sharedPref
+                SharedPrefManager preferences = SharedPrefManager.getInstance(null);
+                preferences.saveUser(currentUser);
+                mContext.startActivity(intent);
+
             }
         });
     }

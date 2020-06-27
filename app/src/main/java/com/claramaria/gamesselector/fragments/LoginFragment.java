@@ -1,9 +1,12 @@
 package com.claramaria.gamesselector.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -103,7 +106,8 @@ public class LoginFragment extends Fragment implements CallbackFragment {
                     fragmentManager = getFragmentManager();
                     fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.add(R.id.fragment_container, new RecyclerViewFragment()).addToBackStack(null).commit();
-
+                    final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
                     Toast.makeText(getContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
 
                 } else {

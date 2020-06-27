@@ -10,7 +10,7 @@
             android:title="@string/list_of_games" />
         <item
             android:id="@+id/nav_message"
-            android:icon="@drawable/ic_message"
+            android:icon="@drawable/ic_chat_black"
             android:title="@string/chat" />
         <item
             android:id="@+id/nav_chat"

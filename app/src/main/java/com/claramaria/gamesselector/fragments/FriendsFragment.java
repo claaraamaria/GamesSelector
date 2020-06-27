@@ -16,6 +16,7 @@ import com.claramaria.gamesselector.R;
 import com.claramaria.gamesselector.adapters.AdapterUsers;
 import com.claramaria.gamesselector.model.User;
 import com.claramaria.gamesselector.server.RESTClient;
+import com.claramaria.gamesselector.storage.SharedPrefManager;
 
 import java.util.List;
 
@@ -52,6 +53,7 @@ public class FriendsFragment extends Fragment {
                 .getInstance()
                 .getApi()
                 .getUsers();
+
         call.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {

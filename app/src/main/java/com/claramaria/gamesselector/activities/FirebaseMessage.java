@@ -19,6 +19,7 @@ import com.google.firebase.messaging.RemoteMessage;
 public class FirebaseMessage  extends FirebaseMessagingService {
     private static final String TAG = "MsgService";
 
+
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         Log.d(TAG, "FROM:"+remoteMessage.getFrom());
@@ -42,5 +43,19 @@ public class FirebaseMessage  extends FirebaseMessagingService {
             NotificationManager notifyManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             notifyManager.notify(0/*ID of notification*/, notifBuilder.build());
         }
+    }
+
+    @Override
+    public void onNewToken(String token) {
+        Log.d(TAG, "Refreshed token: " + token);
+
+        // If you want to send messages to this application instance or
+        // manage this apps subscriptions on the server side, send the
+        // Instance ID token to your app server.
+        sendRegistrationToServer(token);
+    }
+
+    private void sendRegistrationToServer(String token) {
+        Log.d(TAG, "sendRegistrationToServer: received updated token: " + token);
     }
 }

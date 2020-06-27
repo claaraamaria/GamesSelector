@@ -2,9 +2,11 @@ package com.claramaria.gamesselector.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,15 +18,20 @@ import com.claramaria.gamesselector.R;
 import com.claramaria.gamesselector.activities.BallGames;
 import com.claramaria.gamesselector.activities.BoardGames;
 import com.claramaria.gamesselector.activities.CardGames;
-import com.claramaria.gamesselector.activities.OverAgeGames;
 import com.claramaria.gamesselector.activities.InteractiveGames;
+import com.claramaria.gamesselector.activities.OverAgeGames;
 import com.claramaria.gamesselector.adapters.RecyclerViewAdapter;
 import com.claramaria.gamesselector.pojos.GameInfo;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.ArrayList;
 
 public class RecyclerViewFragment extends Fragment implements RecyclerViewAdapter.OnItemClickListener{
     private ArrayList<GameInfo> mList;
+    private static final String TAG = "RecyclerViewFragment";
 
     public RecyclerViewFragment() {
         //required empty public constructor
@@ -40,6 +47,18 @@ public class RecyclerViewFragment extends Fragment implements RecyclerViewAdapte
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mAdapter);
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.w(TAG, "getInstanceId failed", task.getException());
+                        return;
+                    }
+                    String token = task.getResult().getToken();
+                    String msg = getString(R.string.msg_token_fmt, token);
+                    Log.d(TAG, msg);
+                });
+
         return mView;
     }
 

@@ -16,6 +16,7 @@
     <string name="ludsim">LudSim</string>
     <string name="the_place_where_you_can_find_a_friend">The place where you can find a friend</string>
     <string name="logo_of_the_app">Logo of the app</string>
+    <string name="msg_token_fmt">InstanceID Token: %s</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
