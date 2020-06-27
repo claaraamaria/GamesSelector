@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.claramaria.gamesselector.R;
 import com.claramaria.gamesselector.activities.ChatActivity;
-import com.claramaria.gamesselector.fragments.MessageFragment;
 import com.claramaria.gamesselector.model.User;
 import com.claramaria.gamesselector.storage.SharedPrefManager;
 import com.squareup.picasso.Picasso;
@@ -60,7 +59,7 @@ public class AdapterUsers extends RecyclerView.Adapter<AdapterUsers.MyHolder> {
                 Intent intent = new Intent(mContext, ChatActivity.class);
                 intent.putExtra("userId", currentUser.getUserId());//TODO: use this instead of sharedPref
                 SharedPrefManager preferences = SharedPrefManager.getInstance(null);
-                preferences.saveUser(currentUser);
+                preferences.saveTargetUser(currentUser);
                 mContext.startActivity(intent);
 
             }

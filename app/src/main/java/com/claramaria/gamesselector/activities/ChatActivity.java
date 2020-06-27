@@ -14,12 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.claramaria.gamesselector.MainActivity;
 import com.claramaria.gamesselector.R;
 import com.claramaria.gamesselector.model.User;
 import com.claramaria.gamesselector.storage.SharedPrefManager;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -33,8 +31,10 @@ public class ChatActivity extends AppCompatActivity {
     ImageView profileAvatar;
     TextView username;
     TextView name;
-    EditText message;
+    EditText messageEt;
     ImageButton sendBtn;
+    String senderUsername;
+    String receiverUsername;
 
     FirebaseAuth firebaseAuth;
 
@@ -55,14 +55,17 @@ public class ChatActivity extends AppCompatActivity {
         profileAvatar = findViewById(R.id.profileAvatar);
         username = findViewById(R.id.chat_username);
         name = findViewById(R.id.chat_name);
-        message = findViewById(R.id.messageEt);
+        messageEt = findViewById(R.id.messageEt);
         sendBtn = findViewById(R.id.send_btn);
 
         SharedPrefManager preferences = SharedPrefManager.getInstance(ChatActivity.this);
         if (preferences != null) {
-            User user = preferences.getUser();
+            User user = preferences.getTargetUser();
             username.setText(user.getUserName());
             name.setText(user.getName());
+
+            receiverUsername = user.getUserName();
+            senderUsername = preferences.getOwner().getUserName();
 
             try{
                 Picasso.get().load(user.getImageUrl()).into(profileAvatar);
@@ -78,27 +81,29 @@ public class ChatActivity extends AppCompatActivity {
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String messageText = message.getText().toString();
+                String messageText = messageEt.getText().toString();
                 if(!"".equals(messageText)){
-                    sendMessage(null, null, messageText);
+                    sendMessage(messageText);
+                }
+                else{
+                    Toast.makeText(ChatActivity.this, "Cannot send an empty message", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
     }
 
-    private void sendMessage(String sender, String receiver, String message) {
+    private void sendMessage(String message) {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
         HashMap<String, Object> chatMessage = new HashMap<>();
-        chatMessage.put("sender", sender);
-        chatMessage.put("receiver", receiver);
+        chatMessage.put("sender", senderUsername);
+        chatMessage.put("receiver", receiverUsername);
         chatMessage.put("message", message);
 
         reference.child("Chats").push().setValue(chatMessage);
-    }
 
+        messageEt.setText("");
+    }
 
 }

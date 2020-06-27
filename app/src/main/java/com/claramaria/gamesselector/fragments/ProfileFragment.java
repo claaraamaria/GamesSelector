@@ -18,7 +18,6 @@ import com.claramaria.gamesselector.model.User;
 import com.claramaria.gamesselector.storage.SharedPrefManager;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Callback;
@@ -44,7 +43,7 @@ public class ProfileFragment extends Fragment {
 
         SharedPrefManager preferences = SharedPrefManager.getInstance(getContext());
         if (preferences != null) {
-            User user = preferences.getUser();
+            User user = preferences.getOwner();
             profileName.setText(user.getName());
             profileUsername.setText(user.getUserName());
             profileEmail.setText(user.getEmail());

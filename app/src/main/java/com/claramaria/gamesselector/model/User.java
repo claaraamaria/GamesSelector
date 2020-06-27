@@ -1,5 +1,7 @@
 package com.claramaria.gamesselector.model;
 
+import java.util.Objects;
+
 public class User {
 
     private int userId;
@@ -77,5 +79,24 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return userId == user.userId &&
+                name.equals(user.name) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(telephone, user.telephone) &&
+                userName.equals(user.userName) &&
+                Objects.equals(imageUrl, user.imageUrl) &&
+                password.equals(user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId, name, email, telephone, userName, imageUrl, password);
     }
 }

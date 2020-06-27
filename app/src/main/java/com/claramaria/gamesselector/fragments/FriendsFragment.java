@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.claramaria.gamesselector.R;
+import com.claramaria.gamesselector.activities.ChatActivity;
 import com.claramaria.gamesselector.adapters.AdapterUsers;
 import com.claramaria.gamesselector.model.User;
 import com.claramaria.gamesselector.server.RESTClient;
@@ -58,6 +59,13 @@ public class FriendsFragment extends Fragment {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 userList = response.body();
+                SharedPrefManager preferences = SharedPrefManager.getInstance(getContext());
+                if (preferences != null) {
+                    User owner = preferences.getOwner();
+                    userList.remove(owner);
+                }else {
+                    Toast.makeText(getContext(), "Unable to obtain userFriends", Toast.LENGTH_SHORT).show();
+                }
 
                 adapter = new AdapterUsers(getActivity(), userList);
                 recyclerView.setAdapter(adapter);

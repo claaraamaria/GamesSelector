@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -98,7 +97,7 @@ public class LoginFragment extends Fragment implements CallbackFragment {
                 List<User> users = usersResponse.body();
                 if(!CollectionUtils.isEmpty(users)){
                     SharedPrefManager sharedPrefManager = SharedPrefManager.getInstance(getContext());
-                    sharedPrefManager.saveUser(users.get(0));
+                    sharedPrefManager.saveOwner(users.get(0));
 
                     ProfileFragment profileFragment = new ProfileFragment();
                     profileFragment.setCallbackFragment(this);

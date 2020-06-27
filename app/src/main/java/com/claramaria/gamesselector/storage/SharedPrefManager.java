@@ -2,9 +2,12 @@ package com.claramaria.gamesselector.storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.ArraySet;
 
 import com.claramaria.gamesselector.model.User;
 import com.claramaria.gamesselector.utils.Constants;
+
+import java.util.Set;
 
 public class SharedPrefManager {
 
@@ -22,7 +25,37 @@ public class SharedPrefManager {
         return mInstance;
     }
 
-    public void saveUser(User user) {
+    public void saveOwner(User user){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt(Constants.KEY_OWNER_ID, user.getUserId());
+        editor.putString(Constants.KEY_OWNER_EMAIL, user.getEmail());
+        editor.putString(Constants.KEY_OWNER_USERNAME, user.getUserName());
+        editor.putString(Constants.KEY_OWNER_PASSWORD, user.getPassword());
+        editor.putString(Constants.KEY_OWNER_TELEPHONE, user.getTelephone());
+        editor.putString(Constants.KEY_OWNER_NAME, user.getName());
+        editor.putString(Constants.KEY_OWNER_IMAGE_URL, user.getImageUrl());
+
+
+        editor.apply();
+    }
+
+
+    public User getOwner(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        User user = new User();
+        user.setUserId(sharedPreferences.getInt(Constants.KEY_OWNER_ID, -1));
+        user.setEmail(sharedPreferences.getString(Constants.KEY_OWNER_EMAIL, null));
+        user.setUserName(sharedPreferences.getString(Constants.KEY_OWNER_USERNAME, null));
+        user.setPassword(sharedPreferences.getString(Constants.KEY_OWNER_PASSWORD, null));
+        user.setTelephone(sharedPreferences.getString(Constants.KEY_OWNER_TELEPHONE, null));
+        user.setName(sharedPreferences.getString(Constants.KEY_OWNER_NAME, null));
+        user.setImageUrl(sharedPreferences.getString(Constants.KEY_OWNER_IMAGE_URL, null));
+        return user;
+    }
+
+    public void saveTargetUser(User user) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -43,7 +76,7 @@ public class SharedPrefManager {
         return false;
     }
 
-    public User getUser(){
+    public User getTargetUser(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         User user = new User();
         user.setUserId(sharedPreferences.getInt(Constants.KEY_ID, -1));
