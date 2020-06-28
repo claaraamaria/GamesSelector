@@ -83,6 +83,7 @@ public class ChatActivity extends AppCompatActivity {
 
             receiverUsername = user.getUserName();
             senderUsername = preferences.getOwner().getUserName();
+            receiverImage = preferences.getTargetUser().getImageUrl();
 
             try{
                 Picasso.get().load(receiverImage).into(profileAvatar);
@@ -121,14 +122,17 @@ public class ChatActivity extends AppCompatActivity {
                 chatList.clear();
                 for (DataSnapshot ds : snapshot.getChildren()){
                     ChatModel chat = ds.getValue(ChatModel.class);
-                    if(chat.getReceiver().equals(senderUsername) && chat.getSender().equals(receiverUsername) || //TODO: bug here
-                            chat.getReceiver().equals(receiverUsername) && chat.getSender().equals(senderUsername)){
+                    if (chat != null) {
+                        if (senderUsername.equals(chat.getReceiver()) && receiverUsername.equals(chat.getSender()) ||
+                            receiverUsername.equals(chat.getReceiver()) && senderUsername.equals(chat.getSender())){
                         chatList.add(chat);
+                        //dbRef.child(ds.getKey()).removeValue();
                     }
 
                     adapterChat = new AdapterChat(ChatActivity.this, chatList, receiverImage);
                     adapterChat.notifyDataSetChanged();
                     recyclerView.setAdapter(adapterChat);
+                    }
                 }
             }
 

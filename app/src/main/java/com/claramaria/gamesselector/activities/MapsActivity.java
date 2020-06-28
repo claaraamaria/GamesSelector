@@ -172,7 +172,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     Log.d(TAG, "onComplete: found location!");
                     Location currentLocation = (Location) task.getResult();
 
-                    assert currentLocation != null;
                     moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
                             "MyLocation");
                 } else {

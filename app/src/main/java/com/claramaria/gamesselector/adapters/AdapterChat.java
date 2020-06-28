@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.claramaria.gamesselector.R;
 import com.claramaria.gamesselector.model.ChatModel;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.claramaria.gamesselector.model.User;
+import com.claramaria.gamesselector.storage.SharedPrefManager;
 import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
@@ -29,7 +29,7 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.MyHolder> {
     List<ChatModel> chatList;
     String imageUrl;
 
-    FirebaseUser fUser;
+    User user;
 
     public AdapterChat(Context context, List<ChatModel> chatList, String imageUrl) {
         this.context = context;
@@ -63,7 +63,8 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.MyHolder> {
         try{
             Picasso.get().load(imageUrl).into(holder.profileIv);
         } catch (Exception e){
-
+            Picasso.get().load(R.drawable.ic_account_circle_black_24dp)
+                    .into(holder.profileIv);
         }
 
     }
@@ -75,8 +76,8 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.MyHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        fUser = FirebaseAuth.getInstance().getCurrentUser();
-        if(chatList.get(position).getSender().equals(fUser.getUid())){
+        user = SharedPrefManager.getInstance(null).getOwner();
+        if(chatList.get(position).getSender().equals(user.getUserName())){
             return MSG_TYPE_RIGHT;
         }else{
             return MSG_TYPE_LEFT;
